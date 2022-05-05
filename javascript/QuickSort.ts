@@ -26,7 +26,7 @@ const quickSort = (arr: number[]): any => {
     return res;
   }
 };
-console.log(quickSort([33, 10, 15, 7]));
+// console.log(quickSort([33, 10, 15, 7]));
 
-
+export default quickSort;
 
