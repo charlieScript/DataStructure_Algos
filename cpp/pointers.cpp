@@ -12,7 +12,7 @@ int main()
   //     ptr = &var;
   // int *vectorValue = arr.data();
 
-  int arr[3] = { 1, 3, 4};
+  int arr[3] = { 1, 3, 4 };
   ptr = arr;
   cout << *(ptr + 1)  << endl;
   int a;
