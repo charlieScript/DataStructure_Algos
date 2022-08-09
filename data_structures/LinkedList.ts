@@ -80,12 +80,12 @@ class LinkedList {
       removeNode = this.head;
       this.head = this.head.next;
     } else {
-      let prev = this.head
+      let prev = this.head;
       for (let i = 0; i < index - 1; i++) {
-        prev = prev.next
+        prev = prev.next;
       }
       removeNode = prev.next;
-      prev.next = removeNode.next
+      prev.next = removeNode.next;
     }
     this.size = this.size - 1;
     return removeNode;
@@ -109,27 +109,27 @@ class LinkedList {
   }
 
   removeValue(value: number) {
-    let removedNode
+    let removedNode;
     if (this.isEmpty()) {
-      return console.log("list is empty");
+      return console.log('list is empty');
     }
     // if the value in the beginning of the list
     if (this.head.value === value) {
-      this.head = this.head.next
+      this.head = this.head.next;
       this.size = this.size - 1;
-      return value
+      return value;
     } else {
-      let prev = this.head
+      let prev = this.head;
       while (prev.next && prev.next.value !== value) {
-        prev = prev.next
+        prev = prev.next;
       }
       if (prev.next) {
         removedNode = prev.next;
-        prev.next = removedNode.next
+        prev.next = removedNode.next;
         this.size = this.size - 1;
         return value;
       }
-      return null
+      return null;
     }
   }
 
@@ -150,12 +150,21 @@ class LinkedList {
   search(value: number) {
     if (this.isEmpty()) {
       return console.log('list is empty');
-    } else {
-      let current = this.head;
-      while (current.next.value !== value) {
-        
-      }
     }
+    let i = 0;
+    let current = this.head;
+    while (current) {
+      if (current.value === value) {
+        return i;
+      }
+      current = current.next;
+      i++;
+    }
+    return -1;
+  }
+
+  reverse() {
+    
   }
 
   print() {
@@ -178,6 +187,6 @@ const list = new LinkedList();
 list.append(1);
 list.append(2);
 list.append(3);
-list.removeValue(2)
-console.log(list);
+console.log(list.search(4));
 
+console.log(list);
