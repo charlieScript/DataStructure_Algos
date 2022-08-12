@@ -147,6 +147,21 @@ class LinkedList {
     }
   }
 
+  get(index: number) {
+    if (index < 0 || index >= this.size) {
+      return -1;
+    }
+    // if index at head
+    if (this.isEmpty()) {
+      return console.log('list is empty');
+    }
+    let prev = this.head;
+    for (let i = 0; i < index; i++) {
+      prev = prev.next;
+    }
+    return prev.value;
+  }
+
   search(value: number) {
     if (this.isEmpty()) {
       return console.log('list is empty');
@@ -164,7 +179,18 @@ class LinkedList {
   }
 
   reverse() {
-    
+    if (this.isEmpty()) {
+      return console.log('list is empty');
+    }
+    let prev = null;
+    let current = this.head;
+    while (current) {
+      let next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
   }
 
   print() {
@@ -183,10 +209,98 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
-list.append(1);
-list.append(2);
-list.append(3);
-console.log(list.search(4));
+class LinkedListTail {
+  public head: any;
+  public tail: any;
+  public size: any;
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
 
-console.log(list);
+  prepend(value: number) {
+    const newNode = new node(value);
+    if (this.isEmpty()) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.size = this.size + 1;
+  }
+
+  append(value: number) {
+    const newNode = new node(value);
+    if (this.isEmpty()) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.size = this.size + 1;
+  }
+
+  removeFromHead() {
+    if (this.isEmpty()) {
+      return console.log("list is empty");
+    }
+    const value = this.head.value;
+    this.head = this.head.next
+    this.size = this.size - 1;
+    return value
+  }
+
+  removefromTail() {
+    if (this.isEmpty()) {
+      return console.log('list is empty');
+    }
+    const value = this.tail.value;
+    if (this.size === 1) {
+      this.head = null
+      this.tail = null
+    } else {
+      let prev = this.head;
+      while (prev.next !== this.tail) {
+        prev = prev.next
+      }
+      prev.next = null;
+      this.tail = prev
+    }
+    this.size = this.size - 1;
+  }
+
+  isEmpty(): boolean {
+    return this.size === 0;
+  }
+
+  getSize(): number {
+    return this.size;
+  }
+
+  print() {
+    if (this.isEmpty()) {
+      console.log('List is empty');
+    } else {
+      // traverse this list
+      let current = this.head;
+      let listValues = '';
+      while (current) {
+        listValues += `${current.value} `;
+        current = current.next;
+      }
+      console.log(listValues);
+    }
+  }
+}
+
+// const list = new LinkedListTail();
+// list.append(1);
+// list.append(2);
+// list.removefromTail()
+// // list.print()
+// console.log(list);
+
+export default LinkedListTail
