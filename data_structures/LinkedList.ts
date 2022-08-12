@@ -274,6 +274,8 @@ class LinkedListTail {
 
   test() {}
 
+  pr() {}
+
   isEmpty(): boolean {
     return this.size === 0;
   }
