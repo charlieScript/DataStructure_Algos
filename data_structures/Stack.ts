@@ -37,7 +37,7 @@ let stack = new Stack()
 // stack.push(300)
 // console.log(stack.peek());
 
-import LinkedListTail from "./LinkedList";
+import LinkedListTail from "./SinglyLinkedList";
 
 class LinkedListStack {
   list: LinkedListTail;
